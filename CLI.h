@@ -11,24 +11,23 @@ extern "C" {
 #include "SimpleList.h"
 #include "language.h"
 #include <EEPROM.h>
-
 extern uint32_t currentTime;
 extern uint32_t autosaveTime;
 
-extern String macToStr(uint8_t *mac);
-extern void strToColor(String str, uint8_t *buf);
-extern void readFileToSerial(String path, bool showLineNum);
-extern bool readFile(String path, String &buf);
-extern bool removeFile(String path);
-extern bool copyFile(String pathFrom, String pathTo);
-extern bool renameFile(String pathFrom, String pathTo);
-extern bool appendFile(String path, String &buf);
-extern bool removeLines(String path, int lineFrom, int lineTo);
-extern bool replaceLine(String path, int line, String &buf);
-extern bool equalsKeyword(const char *str, const char *keyword);
-extern void startAP(String path, String ssid, String password, uint8_t ch,
-                    bool hidden, bool captivePortal, bool none_password);
-extern void wifiUpdate();
+// extern String macToStr(uint8_t *mac);
+// extern void strToColor(String str, uint8_t *buf);
+// extern void readFileToSerial(String path, bool showLineNum);
+// extern bool readFile(String path, String &buf);
+// extern bool removeFile(String path);
+// extern bool copyFile(String pathFrom, String pathTo);
+// extern bool renameFile(String pathFrom, String pathTo);
+// extern bool appendFile(String path, String &buf);
+// extern bool removeLines(String path, int lineFrom, int lineTo);
+// extern bool replaceLine(String path, int line, String &buf);
+// extern bool equalsKeyword(const char *str, const char *keyword);
+// extern void startAP(String path, String ssid, String password, uint8_t ch,
+//                     bool hidden, bool captivePortal, bool none_password);
+// extern void wifiUpdate();
 
 class CLI {
 public:
@@ -53,6 +52,8 @@ public:
   void execFile(String path);
   void runLine(String input);
   void runCommand(String input);
+  void save_file(String path, String &buf);
+  void read_file(String path, String &buf);
 
 private:
   bool enabled = true;

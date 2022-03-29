@@ -1,5 +1,6 @@
 #include "CLI.h"
 #include "functions.h"
+
 /*
    Shitty code used less resources so I will keep this clusterfuck as it is,
    but if you're interested I made a library for this:
@@ -26,6 +27,9 @@ void CLI::reset_boot_reset_cnt() {
     booted = true;
   }
 }
+
+void CLI::save_file(String path, String &buf) { writeFile(path, buf); }
+void CLI::read_file(String path, String &buf) { readFile(path, buf); }
 
 void CLI::check_boot_reset_cnt(int reset_cnt) {
   EEPROM.begin(4096);
