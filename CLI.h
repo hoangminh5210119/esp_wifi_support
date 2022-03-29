@@ -40,7 +40,7 @@ public:
   void enable();
   void disable();
 
-  void check_boot_reset_cnt(int reset_cnt = 5);
+  bool check_boot_reset_cnt(int reset_cnt = 5);
   void reset_boot_reset_cnt();
 
   void update();

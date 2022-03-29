@@ -31,7 +31,7 @@ void CLI::reset_boot_reset_cnt() {
 void CLI::save_file(String path, String &buf) { writeFile(path, buf); }
 void CLI::read_file(String path, String &buf) { readFile(path, buf); }
 
-void CLI::check_boot_reset_cnt(int reset_cnt) {
+bool CLI::check_boot_reset_cnt(int reset_cnt) {
   EEPROM.begin(4096);
   uint8_t bootCounter = EEPROM.read(0);
 
@@ -39,10 +39,12 @@ void CLI::check_boot_reset_cnt(int reset_cnt) {
     Serial.println("SETUP_FORMAT_SPIFFS");
     LittleFS.format();
     Serial.println("SETUP_OK");
+    return true;
   } else {
     EEPROM.write(0, bootCounter + 1); // add 1 to the boot counter
     EEPROM.commit();
   }
+  return false;
 }
 
 void CLI::load() {
