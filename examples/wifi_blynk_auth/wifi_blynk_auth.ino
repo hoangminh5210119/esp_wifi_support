@@ -15,7 +15,7 @@
 CLI cli;
 
 
-String auth = "hcmDqRbWWT8-yhZ5issHcwehccMjLM2r";
+String auth = "";
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
@@ -32,12 +32,6 @@ WiFiManagerParameter blynk_server_param("server", "blynk server", "blynk-cloud.c
 WiFiManagerParameter blynk_port_param("port", "blynk port", "80", 6);
 WiFiManager wifiManager;
 
-
-BLYNK_WRITE(blynk_relay_pin) {
-  int pinValue = param.asInt();
-  Serial.print("Pin value: ");
-  Serial.println(pinValue);
-}
 
 void setup() {
   Serial.begin(115200);
